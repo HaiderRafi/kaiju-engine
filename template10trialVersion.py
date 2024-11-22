@@ -345,10 +345,11 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
     html_template = html_template.replace('$CountryVarC$', country_lower)
 
     # List of words to randomize for PRandomVar
-    random_words = ["follower count", "average reel plays", "male-to-female follower ratio", "average post likes"]
+    random_words = ["follower numbers", "content excellence", "engagements", "average post likes", "expertise", "strong brand alliances"]
+
 
     # Randomly select words for PRandomVar and replace in template
-    prandom_var = ', '.join(random.sample(random_words, 4))
+    prandom_var = ', '.join(random.sample(random_words, 6))
     html_template = html_template.replace('$PRandomVar$', prandom_var)
 
     # Placeholder for influencer list content
@@ -429,7 +430,7 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
     print(f"HTML file '{output_html_file}' generated successfully.")
 
 # Example usage
-template_html_file = 'videoCommerce4-template.html'  # Path to your updated HTML template file
+template_html_file = 'vidzy4-template.html'  # Path to your updated HTML template file
 excel_file = 'vid-soc-crypto.xlsx'  # Path to your Excel file
 
 niche_lower = 'crypto'  # You can extract this from your Excel or use as variable
