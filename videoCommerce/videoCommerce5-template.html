@@ -38,9 +38,9 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-12">
                     <div class="blog-title-section">
-                        <h1 class="title">Top $countVar$ $NicheVar$ Influencers  in $CountryVar$ - $NicheVar$ Instagrammers in $CountryVar$ (2025)</h1>
-                        <p>Here are the top <a href="https://www.realsubscribers.com/blogs/best-$NicheVarC$-influencers-in-$CountryVarC$.html">$NicheVar$ Instagram influencers</a>  in $CountryVar$. This carefully curated list highlights
-                            the best $NicheVar$ influencers in $CountryVar$, ranked based on their $PRandomVar$. Explore the list below!</p>
+                        <h1 class="title">Top $countVar$ $NicheVarC$ Influencers in $CountryVar$ - $NicheVarC$ Instagrammers in $CountryVar$ (2025)</h1>
+                        <p>Here are the top <a href="https://www.realsubscribers.com/blogs/best-$NicheVarC$-influencers-in-$CountryVarC$.html">$NicheVarC$ Instagram influencers</a>  in $CountryVar$. This carefully curated list highlights
+                            the best $NicheVarC$ influencers in $CountryVar$, ranked based on their $PRandomVar$. Explore the list below!</p>
                         <a class="header-cta primary-gradient" href="../contact-us.html">Connect With Influencers</a>
 
                     </div>
@@ -121,7 +121,7 @@
                         <div class=" contact-block">
                             <!-- Contact Form -->
                             <div class="contact-input">
-                                <p class="contact-us-title">Get Insights of Top Influencers in UAE</p>
+                                <p class="contact-us-title">Get Insights of Top Influencers in $CountryVar$</p>
                                 <form name="contact-form" onsubmit="event.preventDefault();">
                                     <div class="input-box">
                                         <input type="text" class="form-control" name="bname" id="name" placeholder="Brand Name *" required="">
@@ -192,7 +192,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="contact-input">
-                        <p class="contact-us-title">Get Insights of Top Influencers in UAE</p>
+                        <p class="contact-us-title">Get Insights of Top Influencers in $CountryVar$</p>
                         <form name="bcontact-form" onsubmit="event.preventDefault();">
                             <div class="input-box">
                                 <input type="text" class="form-control" name="bname" id="bname" placeholder="Brand Name *" required="">
@@ -261,50 +261,7 @@
                 $(".header-navigation").addClass("sticky");
             }
         });
-
-
-        function toggle_read_more(className) {
-            const readMore = document.getElementById(className);
-            readMore.parentElement.classList.toggle('active');
-            if (readMore.textContent === 'Less More') {
-                readMore.innerText = 'See More'
-            } else {
-                readMore.innerText = 'Less More'
-            }
-        }
-
         // lazyload
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var lazyloadImages = document.querySelectorAll("img.lazy");
-            var lazyloadThrottleTimeout;
-
-            function lazyload() {
-                if (lazyloadThrottleTimeout) {
-                    clearTimeout(lazyloadThrottleTimeout);
-                }
-
-                lazyloadThrottleTimeout = setTimeout(function () {
-                    var scrollTop = window.pageYOffset;
-                    lazyloadImages.forEach(function (img) {
-                        if (img.offsetTop < (window.innerHeight + scrollTop)) {
-                            img.src = img.dataset.src;
-                            img.classList.remove('lazy');
-                        }
-                    });
-                    if (lazyloadImages.length == 0) {
-                        document.removeEventListener("scroll", lazyload);
-                        window.removeEventListener("resize", lazyload);
-                        window.removeEventListener("orientationChange", lazyload);
-                    }
-                }, 20);
-            }
-
-            document.addEventListener("scroll", lazyload);
-            window.addEventListener("resize", lazyload);
-            window.addEventListener("orientationChange", lazyload);
-        });
-
 
     </script>
     <script>
@@ -347,42 +304,6 @@
         function scrollToTop() {
             $("html, body").animate({ scrollTop: 0 }, "slow");
         }
-
-        //accod section
-        const accordionHeaders = document.querySelectorAll('.accod-head');
-
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const panel = header.parentElement;
-                const isActive = panel.classList.contains('active');
-                const icon = header.querySelector('i');
-                const allPanels = document.querySelectorAll('.accod-panel');
-
-                // Close all panels
-                allPanels.forEach(item => {
-                    item.classList.remove('active');
-                    const itemIcon = item.querySelector('i');
-                    itemIcon.classList.remove('fa-minus');
-                    itemIcon.classList.add('fa-plus');
-                });
-
-                // Toggle active class for clicked panel
-                if (!isActive) {
-                    panel.classList.add('active');
-                    icon.classList.remove('fa-plus');
-                    icon.classList.add('fa-minus');
-                }
-
-                // Close panel if it's already active
-                else {
-                    panel.classList.remove('active');
-                    icon.classList.remove('fa-minus');
-                    icon.classList.add('fa-plus');
-                }
-            });
-        });
-
-
 
 
     </script>

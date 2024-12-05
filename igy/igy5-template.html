@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="undefined" crossorigin="anonymous">
     <link href="../css/blog-new-style.css" rel="stylesheet">
+    <meta name="x-api-key" content="ekdjenbdhebdgyejcnwih">
     <!-- <link href="/css/home.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
@@ -120,7 +121,7 @@
                         <div class=" contact-block">
                             <!-- Contact Form -->
                             <div class="contact-input">
-                                <p class="contact-us-title">Get Insights of Top Influencers in Dubai</p>
+                                <p class="contact-us-title">Get Insights of Top Influencers in $CountryVar$</p>
                                 <form name="contact-form" onsubmit="event.preventDefault();">
                                     <div class="input-box">
                                         <input type="text" class="form-control" name="bname" id="name"
@@ -208,7 +209,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="contact-input">
-                        <p class="contact-us-title">Get Insights of Top Influencers in Dubai</p>
+                        <p class="contact-us-title">Get Insights of Top Influencers in $CountryVar$</p>
                         <form name="bcontact-form" onsubmit="event.preventDefault();">
                             <div class="input-box">
                                 <input type="text" class="form-control" name="bname" id="bname"
@@ -230,8 +231,8 @@
                             <div class="input-box">
                                 <textarea id="bmessage" class="form-control" name="message" rows="3"
                                     placeholder="Message"></textarea>
-                                <div class="g-recaptcha mt-4" data-sitekey="6LdEaespAAAAAN9qGEp4pYPVNCnxx71S_SA1ZNQV">
-                                </div>
+                                <!-- <div class="g-recaptcha mt-4" data-sitekey="6LdEaespAAAAAN9qGEp4pYPVNCnxx71S_SA1ZNQV">
+                                </div> -->
                                 <button onclick="bsendEmail()" id="bmail-btn" type="submit" value="Submit"
                                     name="subscriberBtn" class="main-btn backtohome-btn formbold-btn mt-4">
                                     <span id="bbtn-spinner" class="spinner-border spinner-border-sm" role="status"
@@ -280,25 +281,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="./js/loadComponent.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
     <script src="../js/blog-form.js"></script>
     <script src="../js/blogs.js"></script>
     <script src="../js/lazysizes.min.js"></script>
-    <script type="text/javascript">
-        var CaptchaCallback = function () {
-            jQuery('.g-recaptcha').each(function (index, el) {
-                grecaptcha.render(el, {
-                    'sitekey': jQuery(el).attr('data-sitekey')
-                    , 'theme': jQuery(el).attr('data-theme')
-                    , 'size': jQuery(el).attr('data-size')
-                    , 'tabindex': jQuery(el).attr('data-tabindex')
-                    , 'callback': jQuery(el).attr('data-callback')
-                    , 'expired-callback': jQuery(el).attr('data-expired-callback')
-                    , 'error-callback': jQuery(el).attr('data-error-callback')
-                });
-            });
-        };
-    </script>
 </body>
 
 </html>

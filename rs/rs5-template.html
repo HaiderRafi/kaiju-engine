@@ -22,23 +22,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/new-blog.css">
+  <meta name="x-api-key" content="ekdjenbdhebdgyejcnwih">
 
-
-  <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {},
-      Tawk_LoadStart = new Date();
-    (function () {
-      var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/5e5380e3a89cda5a1887988e/default';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
-  <!--End of Tawk.to Script-->
   <!-- Facebook Pixel Code -->
   <script>
     !function (f, b, e, v, n, t, s) {
@@ -91,8 +76,8 @@
   "url": "https://www.realsubscribers.com/assets/logo-blue.png"
   }
   },
-  "datePublished": "11-20-2024",
-  "dateModified": "11-20-2024"
+  "datePublished": "12-03-2024",
+  "dateModified": "12-03-2024"
   }
   </script>
   
@@ -193,7 +178,7 @@
                 <div class=" contact-block">
                     <!-- Contact Form -->
                     <div class="contact-input">
-                        <p class="contact-us-title">Get Insights of Top Influencers in Dubai</p>
+                        <p class="contact-us-title">Get Insights of Top Influencers $CountryVar$</p>
                         <form name="contact-form" onsubmit="event.preventDefault();">
                             <div class="input-box">
                                 <input type="text" class="form-control" name="bname" id="name" placeholder="Brand Name *" required="">
@@ -212,7 +197,7 @@
                                     <textarea id="message" class="form-control" name="message" rows="3" placeholder="Message"></textarea>
                                     <div class="g-recaptcha mt-4" data-sitekey="6LeEo3cqAAAAAJTzSeD9rS5Vzo7Et8QwR2sMNTUz"></div>            
                                     <button onclick="sendEmail()" id="mail-btn" type="submit" value="Submit" name="subscriberBtn" class="main-btn backtohome-btn formbold-btn mt-4">
-                                      <!-- <span id="btn-spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+                                      <span id="btn-spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                       Get Influencers</button>
                                 </div>
                         </form>
@@ -273,28 +258,28 @@
             </div>
             <div class="modal-body">
                 <div class="contact-input">
-                    <p class="contact-us-title">Get Insights of Top Influencers in Dubai</p>
-                    <form name="contact-form" onsubmit="event.preventDefault();">
+                    <p class="contact-us-title">Get Insights of Top Influencers in $CountryVar$</p>
+                    <form name="bcontact-form" onsubmit="event.preventDefault();">
                         <div class="input-box">
-                            <input type="text" class="form-control" name="bname" id="name" placeholder="Brand Name *" required>
-                        </div>
-                        <div class="input-box">
-                            <input type="text" class="form-control" name="weburl" id="link" placeholder="Website Link / Social Media Link">
-                        </div>
-                        <div class="input-box">
-                            <input type="number" class="form-control" name="brandPhone" id="phone" placeholder="Phone Number *" required>
-                        </div>
-                        <div class="input-box">
-                            <input type="text" class="form-control" name="email" id="email" placeholder="Email Address *" required>
+                            <input type="text" class="form-control" name="bname" id="bname" placeholder="Brand Name *" required="">
+                            </div>
+                            <div class="input-box">
+                            <input type="text" class="form-control" name="weburl" id="blink" placeholder="Website Link / Social Media Link">
+                            </div>
+                            <div class="input-box">
+                            <input type="number" class="form-control" name="brandPhone" id="bphone" placeholder="Phone Number *" required="">
+                            </div>
+                            <div class="input-box">
+                            <input type="text" class="form-control" name="email" id="bemail" placeholder="Email Address *" required="">
                             <span id="emailErrorblog" class="error"></span>
-                        </div>
-                        <div class="input-box">
-                            <textarea id="message" class="form-control" name="message" rows="3" placeholder="Message"></textarea>
-                            <!-- <div class="g-recaptcha" data-sitekey="6LeEo3cqAAAAAJTzSeD9rS5Vzo7Et8QwR2sMNTUz"></div>             -->
-                            <button onclick="sendEmail()" id="mail-btn" type="submit" value="Submit" name="subscriberBtn" class="main-btn backtohome-btn formbold-btn mt-4">
-                                Get Influencers
-                            </button>
-                        </div>
+                            </div>
+                            <div class="input-box">
+                                <textarea id="bmessage" class="form-control" name="message" rows="3" placeholder="Message"></textarea>
+                                <!-- <div class="g-recaptcha mt-4" data-sitekey="6LeEo3cqAAAAAJTzSeD9rS5Vzo7Et8QwR2sMNTUz"></div>             -->
+                                <button onclick="bsendEmail()" id="bmail-btn" type="submit" value="Submit" name="subscriberBtn" class="main-btn backtohome-btn formbold-btn mt-4">
+                                  <span id="bbtn-spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                  Get Influencers</button>
+                            </div>
                     </form>
                     <div class="inf-list-icon influ-list">
                         <ul>

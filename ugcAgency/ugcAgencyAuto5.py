@@ -171,10 +171,10 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
 
 # Example usage
 template_html_file = './ugcAgency/ugcAgency5-template.html'  # Path to your updated HTML template file
-excel_file = './ugca-videaze-grs-ugc-kuwait.xlsx'  # Path to your Excel file
+excel_file = './ugca-videaze-grs-ugc-egypt.xlsx'  # Path to your Excel file
 
 # niche_lower = 'fashion'  # You can extract this from your Excel or use as variable
-country_lower = 'kuwait'    # You can extract this from your Excel or use as variable
+country_lower = 'egypt'    # You can extract this from your Excel or use as variable
 output_html_file = f'best-instagram-ugc-creators-in-{country_lower}.html'  # Dynamic output HTML file name
 
 

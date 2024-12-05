@@ -1,6 +1,12 @@
-# For 10 Listicle stratergy
-# utilizing RS list
-# not countVar version because not in use in this code
+# for rs
+# cropping the floor version (non random version)
+# used for decending order only
+# 5 template
+# can use in every sheet with decending order and 5 template
+# $countVar$ 
+# not exceeding above 100
+# for Borad Catogery in ugc
+# SAME SAME
 
 import pandas as pd
 import random
@@ -35,9 +41,26 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
     # Load the Excel file
     data = pd.read_excel(excel_file)
 
+    total_influencers = len(data)
+
+    # for not list exceeeding above 100 
+    max_influencers = 100
+    if total_influencers > max_influencers:
+        total_influencers = max_influencers
+
+    # cutting the floor
+    specified_values = {100, 90, 80, 70, 60, 50, 40, 30, 20, 10}
+
+    if total_influencers not in specified_values:
+        rounded_count = (total_influencers // 10) * 10
+    else:
+        rounded_count = total_influencers
+
     # Read the HTML template
     with open(template_html_file, 'r', encoding='utf-8') as file:
         html_template = file.read()
+
+    html_template = html_template.replace('$countVar$', str(rounded_count))
 
     # Get the Niche and Country from the first row of the Excel file
     niche = data.loc[0, 'Nichee'] if pd.notna(data.loc[0, 'Nichee']) else 'Unknown Niche'
@@ -54,23 +77,30 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
     html_template = html_template.replace('$CountryVarC$', country_lower)
 
     # List of words to randomize for PRandomVar
-    random_words = ["follower counts", "average reel plays", "ratio of male-female audience", "engagement rate", "average likes"]
-
-    # Randomly select words for PRandomVar and replace in template
-    prandom_var = ', '.join(random.sample(random_words, 5))
+    random_words = ["engagement rate", "quality of content", "sentiment analysis", "brand collaboration"]
+    
+    
+    prandom_var = ', '.join(random.sample(random_words, 4))  # Randomize 6 words
     html_template = html_template.replace('$PRandomVar$', prandom_var)
+
+    # Remove the placeholder influencer block after populating
+    placeholder_start = html_template.find('<div class="influencer-profile">')
+    placeholder_end = html_template.find('<!-- Additional influencer profiles can go here -->')
+
+    if placeholder_start != -1 and placeholder_end != -1:
+        html_template = html_template[:placeholder_start] + html_template[placeholder_end:]
 
     # Placeholder for influencer list content
     influencer_content_list = ""
 
-    # Take the first 20 influencers, shuffle them, and then select 10
-    first_20_influencers = data.head(20).sample(n=10, random_state=random.randint(1, 1000)).reset_index(drop=True)
+    # Select and process the required number of influencers sequentially
+    selected_data = data.head(rounded_count)
 
     # Initialize rank counter
     rank = 1
 
-    # Process influencers
-    for _, row in first_20_influencers.iterrows():
+    # Loop through each row in the data and process sequentially
+    for _, row in selected_data.iterrows():
         # Extract influencer details from the Excel file
         image = row['Image-URL'] if pd.notna(row['Image-URL']) else 'default_image.png'
         profileUrl = row['Profile-URL'] if pd.notna(row['Profile-URL']) else '#'
@@ -84,58 +114,54 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
         avgLikes_num = convert_to_number(avgLikes)
         reelPlays_num = convert_to_number(reelPlays)
 
-        # Calculate engagement rate
-        engagement_rate = (avgLikes_num / followers_num) * 100 if followers_num > 0 else 0
-        avg_views = (reelPlays_num / followers_num) * 100
+        # Calculate missing fields
+        if followers_num > 0:
+            engagement_rate = (avgLikes_num / followers_num) * 100
+            avg_views = (reelPlays_num / followers_num) * 100
+        else:
+            engagement_rate = 0
 
         # Calculate Male and Female percentages dynamically
         male_percentage, female_percentage = calculate_gender_percentage(row)
 
         # Construct the HTML block for each influencer with correct rank
         influencer_html = f"""
-         <div class="influencer-profile">
-                <div class="profile-header">
-            <img class="profile-img" alt="{name}" src="{image}" />
-            <div class="profile-info">
-                <div class="blog-profile-wrapper">
-                    <h3 class="profile-name"><span class="profile-rank">{rank}.</span> <a href="{profileUrl}" rel="nofollow" target="_blank">{name}</a></h3>
-                    <p><i class="fab fa-instagram"></i><span>{followers}</span> Followers</p>
-                </div>
-                  <div class="stats-block">
-                         <div class="stats-wrapper">
-                             <div class="stat-item">
-                                 <span>Engagement Rate: </span> {engagement_rate:.2f}%
-                             </div>
-                             <div class="stat-item">
-                                 <span>Avg Reel Plays: </span> {reelPlays}
-                             </div>
-                             <div class="stat-item">
-                                 <span class="stats-padd-right">Avg <br> Likes: </span> {avgLikes}
-                             </div>
+        <div class="influencer-profile">
+            <div class="profile-header">
+        <img class="profile-img" alt="{name}" src="{image}" />
+        <div class="profile-info">
+            <div class="blog-profile-wrapper">
+                <h3 class="profile-name"><span class="profile-rank">{rank}.</span> <a href="{profileUrl}" rel="nofollow" target="_blank">{name}</a></h3>
+                <p><i class="fa fa-instagram"></i><span>{followers}</span> Followers</p>
+            </div>
+              <div class="stats-block">
+                     <div class="stats-wrapper">
+                         <div class="stat-item">
+                             <span>Engagement Rate: </span> {engagement_rate:.2f}%
                          </div>
-
-                         <div class="profile-stats-grid">
-                             <div class="stat-item">
-                                 <span>Male Audience: </span> {male_percentage if male_percentage == 'Unknown' else f'{male_percentage:.2f}'}%
-                             </div>
-                             <div class="stat-item">
-                                 <span>Female Audience: </span> {female_percentage if female_percentage == 'Unknown' else f'{female_percentage:.2f}'}%
-                             </div>
+                         <div class="stat-item">
+                             <span>Avg Reel Plays: </span> {reelPlays}
+                         </div>
+                         <div class="stat-item">
+                             <span class="stats-padd-right">Avg <br> Likes: </span> {avgLikes}
                          </div>
                      </div>
-            </div>
-            </div>
+
+                     <div class="profile-stats-grid">
+                         <div class="stat-item">
+                             <span>Male Audience: </span> {male_percentage if male_percentage == 'Unknown' else f'{male_percentage:.2f}'}%
+                         </div>
+                         <div class="stat-item">
+                             <span>Female Audience: </span> {female_percentage if female_percentage == 'Unknown' else f'{female_percentage:.2f}'}%
+                         </div>
+                     </div>
+                 </div>
         </div>
-        """
+        </div>
+    </div>
+    """
         influencer_content_list += influencer_html
         rank += 1  # Increment the rank for the next influencer
-
-    # Remove the placeholder block
-    placeholder_start = html_template.find('<div class="influencer-profile">')
-    placeholder_end = html_template.find('<!-- Additional influencer profiles can go here -->')
-
-    if placeholder_start != -1 and placeholder_end != -1:
-        html_template = html_template[:placeholder_start] + html_template[placeholder_end:]
 
     # Replace placeholder in the HTML template with the generated influencer content
     final_html_content = html_template.replace("<!-- Additional influencer profiles can go here -->", influencer_content_list)
@@ -147,11 +173,12 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
     print(f"HTML file '{output_html_file}' generated successfully.")
 
 # Example usage
-template_html_file = 'impe5-template.html'  # Path to your updated HTML template file
-excel_file = 'rs-vidcom-ytinsta-arab-dubai.xlsx'  # Path to your Excel file
+template_html_file = './rs/broadUgc/rs5-template-broad.html'  # Path to your updated HTML template file
+excel_file = './rs-ytInsta-igPackages-ugc-canada.xlsx'  # Path to your Excel file
 
-niche_lower = 'arab'  # You can extract this from your Excel or use as variable
-country_lower = 'dubai'    # You can extract this from your Excel or use as variable
-output_html_file = f'top-{niche_lower}-influencers-in-{country_lower}.html'  # Dynamic output HTML file name
+# niche_lower = 'kids'  # You can extract this from your Excel or use as variable
+country_lower = 'canada'    # You can extract this from your Excel or use as variable
+output_html_file = f'top-instagram-ugc-creators-in-{country_lower}.html'  # Dynamic output HTML file name
 
 generate_influencer_html(template_html_file, excel_file, output_html_file)
+

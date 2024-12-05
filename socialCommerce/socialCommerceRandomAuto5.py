@@ -281,9 +281,6 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
     # # Split influencers into chunks of 10
     # chunks = [data[i:i + chunk_size] for i in range(0, total_influencers, chunk_size)]
 
-
-
-
      # Randomize influencers in chunks of 10
     chunk_size = 10
     chunks = [selected_data[i:i + chunk_size] for i in range(0, rounded_count, chunk_size)]
@@ -368,11 +365,11 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
     print(f"HTML file '{output_html_file}' generated successfully.")
 
 # Example usage
-template_html_file = 'socialCommerce5-template.html'  # Path to your updated HTML template file
-excel_file = 'igy-social-videase-arab-dubai.xlsx'  # Path to your Excel file
+template_html_file = './socialCommerce/socialCommerce5-template.html'  # Path to your updated HTML template file
+excel_file = './igy-social-videase-skincare-abudhabi.xlsx'  # Path to your Excel file
 
-niche_lower = 'arab'  # You can extract this from your Excel or use as variable
-country_lower = 'dubai'    # You can extract this from your Excel or use as variable
+niche_lower = 'skincare'  # You can extract this from your Excel or use as variable
+country_lower = 'abu-dhabi'    # You can extract this from your Excel or use as variable
 output_html_file = f'top-{niche_lower}-influencers-in-{country_lower}.html'  # Dynamic output HTML file name
 
 generate_influencer_html(template_html_file, excel_file, output_html_file)
