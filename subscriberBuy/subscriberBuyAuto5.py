@@ -147,11 +147,11 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
     print(f"HTML file '{output_html_file}' generated successfully.")
 
 # Example usage
-template_html_file = 'subscriberBuy5-template.html'  # Path to your updated HTML template file
-excel_file = 'igy-social-videase-arab-dubai.xlsx'  # Path to your Excel file
+template_html_file = './subscriberBuy/subscriberBuy5-template.html'  # Path to your updated HTML template file
+excel_file = './igy-social-videase-beauty-usa.xlsx'  # Path to your Excel file
 
-niche_lower = 'arab'  # You can extract this from your Excel or use as variable
-country_lower = 'dubai'    # You can extract this from your Excel or use as variable
-output_html_file = f'top-{niche_lower}-influencers-in-{country_lower}.html'  # Dynamic output HTML file name
+niche_lower = 'beauty'  # You can extract this from your Excel or use as variable
+country_lower = 'usa'    # You can extract this from your Excel or use as variable
+output_html_file = f'top-{niche_lower}-instagrammers-in-{country_lower}.html'  # Dynamic output HTML file name
 
 generate_influencer_html(template_html_file, excel_file, output_html_file)

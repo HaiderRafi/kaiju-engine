@@ -149,10 +149,10 @@ def generate_influencer_html(template_html_file, excel_file, output_html_file):
 
 # Example usage
 template_html_file = './videase/videase5-template.html'  # Path to your updated HTML template file
-excel_file = './igy-social-videase-fashion-abudhabi.xlsx'  # Path to your Excel file
+excel_file = './igy-social-videase-beauty-usa.xlsx'  # Path to your Excel file
 
-niche_lower = 'fashion'  # You can extract this from your Excel or use as variable
-country_lower = 'abu-dhabi'    # You can extract this from your Excel or use as variable
+niche_lower = 'beauty'  # You can extract this from your Excel or use as variable
+country_lower = 'usa'    # You can extract this from your Excel or use as variable
 output_html_file = f'top-{niche_lower}-instagrammers-in-{country_lower}.html'  # Dynamic output HTML file name
 
 generate_influencer_html(template_html_file, excel_file, output_html_file)
